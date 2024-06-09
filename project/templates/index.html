@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Breast Cancer Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="array_input">Input Feature Array:</label>
+        <textarea id="array_input" name="array_input" rows="4" cols="50" required></textarea>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if log_reg_result is not none and rf_result is not none %}
+        <h2>Prediction Results:</h2>
+        <p>Logistic Regression Prediction: {{ log_reg_result }}</p>
+        <p>Random Forest Prediction: {{ rf_result }}</p>
+    {% endif %}
+</body>
+</html>
